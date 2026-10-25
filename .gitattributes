@@ -1,0 +1,16 @@
+# Skrypty powłoki MUSZĄ mieć LF — CRLF powoduje "bad interpreter: /bin/bash^M"
+*.sh            text eol=lf
+*.py            text eol=lf
+*.template      text eol=lf
+*.service       text eol=lf
+
+# Dokumentacja i pozostałe pliki tekstowe
+*.md            text eol=lf
+LICENSE         text eol=lf
+.gitignore      text eol=lf
+.gitattributes  text eol=lf
+
+# Pliki binarne (jeśli pojawią się w przyszłości)
+*.png           binary
+*.jpg           binary
+*.gif           binary

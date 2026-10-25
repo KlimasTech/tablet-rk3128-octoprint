@@ -1,0 +1,18 @@
+[Unit]
+Description=Virtual serial bridge __SERIAL_LINK__ -> TCP __GRBL_TCP_HOST__:__GRBL_TCP_PORT__ (GRBL)
+Documentation=https://github.com/KlimasTech/tablet-rk3128-octoprint
+After=network.target
+# Most musi wstać PRZED OctoPrintem — OctoPrint przy starcie skanuje listę
+# portów, a __SERIAL_LINK__ nie istnieje, dopóki socat go nie utworzy.
+Before=octoprint.service
+
+[Service]
+Type=simple
+# Świeży link przy każdym starcie (socat nie nadpisuje istniejącego).
+ExecStartPre=/bin/rm -f __SERIAL_LINK__
+ExecStart=__SOCAT_BIN__ -d -d pty,raw,echo=0,link=__SERIAL_LINK__,user=__DESKTOP_USER__,group=dialout,mode=660 tcp:__GRBL_TCP_HOST__:__GRBL_TCP_PORT__
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

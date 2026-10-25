@@ -1,0 +1,16 @@
+[Unit]
+Description=MJPEG webcam stream for OctoPrint (__WEBCAM_DEVICE_PATH__)
+Documentation=https://github.com/KlimasTech/tablet-rk3128-octoprint
+After=multi-user.target
+
+[Service]
+Type=simple
+User=__DESKTOP_USER__
+Environment=WEBCAM_DEVICE=__WEBCAM_DEVICE_INDEX__
+Environment=WEBCAM_PORT=__WEBCAM_PORT__
+ExecStart=/usr/bin/python3 __WEBCAM_SCRIPT_PATH__
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

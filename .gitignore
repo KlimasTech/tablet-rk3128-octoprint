@@ -1,0 +1,15 @@
+# Pliki tymczasowe / edytorskie
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Lokalne nadpisania konfiguracji (nie commitować ścieżek/haseł)
+.env
+*.local
+
+# Wyniki diagnostyki — mogą zawierać klucze API i dane logowania
+diagnoza.txt
+diagnoza*.txt
+*.log

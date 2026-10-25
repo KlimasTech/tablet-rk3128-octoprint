@@ -1,0 +1,16 @@
+[Unit]
+Description=OctoPrint Server
+Documentation=https://github.com/KlimasTech/tablet-rk3128-octoprint
+After=network.target octoprint-serial-bridge.service
+Wants=octoprint-serial-bridge.service
+
+[Service]
+Type=simple
+User=__DESKTOP_USER__
+WorkingDirectory=/home/__DESKTOP_USER__
+ExecStart=__OCTOPRINT_VENV__/bin/octoprint serve
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
